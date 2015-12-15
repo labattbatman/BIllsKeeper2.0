@@ -76,6 +76,7 @@
     <Compile Include="Assets\01-Script\InputFieldType.cs" />
     <Compile Include="Assets\01-Script\Manager\DataManager.cs" />
     <Compile Include="Assets\01-Script\Manager\MenuManager.cs" />
+    <Compile Include="Assets\01-Script\Manager\StatManager.cs" />
     <Compile Include="Assets\01-Script\Manager\SuggestedChoicesManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
