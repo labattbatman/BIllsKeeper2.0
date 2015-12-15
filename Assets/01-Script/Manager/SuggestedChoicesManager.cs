@@ -10,6 +10,7 @@ public class SuggestedChoicesManager : MonoBehaviour {
     public InputField inputFieldRelated;
 
     MenuManager menuManager;
+    DataManager dataManager;
     const int MAX_SUGGESTED_CHOICES = 6;
 
     // Use this for initialization
@@ -17,6 +18,7 @@ public class SuggestedChoicesManager : MonoBehaviour {
     {
         suggestedChoicesBox.active = false;
         menuManager = GameObject.Find("Main Camera").GetComponent<MenuManager>();
+        dataManager = GameObject.Find("Main Camera").GetComponent<DataManager>();
     }
 	
 	// Update is called once per frame
@@ -65,7 +67,19 @@ public class SuggestedChoicesManager : MonoBehaviour {
             return;
 
         FindInputfieldRelated(type);
-        string test = "Banane,Bonne,Bot,Raynor,Rideau,Rot";
+
+        string test = string.Empty;
+
+        if (type == InputFieldType.InfoType.Category)
+        {
+            string store = menuManager.GetInputField(InputFieldType.InfoType.Store).text;
+            test = dataManager.GetCategorySaved(store);
+        }
+
+        if (type == InputFieldType.InfoType.Store)
+        {
+            test = dataManager.GetStoreSaved();
+        }
 
         if (type == InputFieldType.InfoType.Date)
         {
@@ -82,6 +96,7 @@ public class SuggestedChoicesManager : MonoBehaviour {
             List<string> queryResult = (
             from w in choicesPool
             where input.Length <= w.Length && input.ToLower() == w.Substring(0, input.Length).ToLower()
+            where !string.IsNullOrEmpty(w)
             select w).Take(MAX_SUGGESTED_CHOICES).ToList();
             ShowSuggestedChoices(queryResult);
         }   

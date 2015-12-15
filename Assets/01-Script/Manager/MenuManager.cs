@@ -54,7 +54,18 @@ public class MenuManager : MonoBehaviour {
             if (inputFields.transform.GetChild(i).GetChild(0).GetComponent<InputField>().enabled)
                 return;
 
-            billInfo += inputFields.transform.GetChild(i).GetChild(0).GetComponent<InputField>().text + ",";
+            string info = inputFields.transform.GetChild(i).GetChild(0).GetComponent<InputField>().text;
+            billInfo += info + ",";
+
+            if (i == 0)
+            {
+                GetComponent<DataManager>().AddNewStore(info);
+            }
+            else if (i == 1)
+            {
+                GetComponent<DataManager>().AddNewCategory(inputFields.transform.GetChild(0).GetChild(0).GetComponent<InputField>().text, info);
+            }
+
         }
         GetComponent<DataManager>().AddNewBill(billInfo);
         ResetInputFields();

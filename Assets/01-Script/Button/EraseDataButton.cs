@@ -26,5 +26,6 @@ public class EraseDataButton : MonoBehaviour {
     public void EraseData()
     {
         dataManager.EraseData();
+        ShowEraseData();
     }
 }
