@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
     const string savedStoreData = "savedStoreData";
     const string savedCategoryData = "savedCategoryData";
     const string savedAllCategoryData = "savedAllCategoryData";
+    const string savedStats = "savedStated";
 
     void Start()
     {
@@ -81,6 +82,11 @@ public class DataManager : MonoBehaviour
         return PlayerPrefs.GetString(savedStoreData, string.Empty);
     }
 
+    public string GetSavedStats()
+    {
+        return PlayerPrefs.GetString(savedStats);
+    }
+
     public void AddNewBill(string billInfo)
     {
         string billSaved = GetBillData();
@@ -117,6 +123,11 @@ public class DataManager : MonoBehaviour
             stores = OrderWordAlphabetically(stores);
             SaveData(savedStoreData, stores);
         }
+    }
+
+    public void SavedNewStats(string stats)
+    {
+        SaveData(savedStats, stats);
     }
 
     void AddNewCategoryToAllCategory(string category)

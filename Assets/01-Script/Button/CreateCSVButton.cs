@@ -21,6 +21,7 @@ public class CreateCSVButton : MonoBehaviour {
     public void CreateCVS()
     {
         statManager.AnalazeInfoBill();
-        Application.OpenURL("mailto:alexislebel@hotmail.com?subject=BillsKeeper&body=" + dataManager.GetBillData());
+        string body = dataManager.GetBillData() + "\n" + dataManager.GetSavedStats();
+        Application.OpenURL("mailto:alexislebel@hotmail.com?subject=BillsKeeper&body=" + );
     }
 }

@@ -107,6 +107,6 @@ public class StatManager : MonoBehaviour {
         }*/
 
         Debug.Log(result);
-        dataManager.AddNewBill(result);
+        dataManager.SavedNewStats(result);
     }
 }
